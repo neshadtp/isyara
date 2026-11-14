@@ -1,5 +1,9 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase/client";
 import "./dashboard.css";
+
 
 const stats = [
   { icon: "⭐", value: "48", label: "Bintang", tag: "Klaim" },
@@ -77,6 +81,35 @@ const stickers = [
 ];
 
 export default function PetualanganPage() {
+    const [nama, setNama] = useState("");
+
+useEffect(() => {
+  const ambilNama = async () => {
+    const { data: { user }, error } = await supabase.auth.getUser();
+
+    if (!error && user) {
+      const namaPengguna = user.user_metadata?.full_name;
+
+      if (namaPengguna) {
+        setNama(namaPengguna);
+      }
+    }
+  };
+
+  ambilNama();
+
+  const { data: { subscription } } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      const namaPengguna = session?.user?.user_metadata?.full_name;
+
+      if (namaPengguna) {
+        setNama(namaPengguna);
+      }
+    }
+  );
+
+  return () => subscription.unsubscribe();
+}, []);
   return (
     <div className="db">
       {/* ===== Sapaan & statistik ===== */}
@@ -87,7 +120,7 @@ export default function PetualanganPage() {
           </span>
           <div>
             <span className="db-rank">Penjelajah Bintang</span>
-            <h1>Halo, Dafi! ⭐</h1>
+            <h1>Halo, {nama}! ⭐</h1>
           </div>
         </div>
         <ul className="db-stats">
@@ -107,7 +140,7 @@ export default function PetualanganPage() {
         <div className="db-yara">
           <span className="db-yara-face" aria-hidden="true">😄</span>
           <p>
-            Hebat, Dafi! Yuk lanjut ke <Link href="/bicaraku">BicaraKu</Link> atau
+            Hebat, {nama}! Yuk lanjut ke <Link href="/bicaraku">BicaraKu</Link> atau
             main di <Link href="/berhitung">Pulau Angka</Link>!
           </p>
         </div>
