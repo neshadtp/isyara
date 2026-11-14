@@ -927,3 +927,21 @@ h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; }
     font-size: 22px;
   }
 }
+
+/* Reset gaya bawaan <button> untuk menu navbar */
+.sn-link {
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Tombol "Belajar" di menu HP */
+button.sn-tile {
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}

@@ -201,10 +201,6 @@ export default function Home() {
             <span className="eyebrow">✨ DIRANCANG BERSAMA TERAPIS WICARA</span>
             <h2>Mengapa ISYARA Begitu Spesial?</h2>
           </div>
-          <p>
-            Mendukung perkembangan anak dengan bahasa visual konkret, interaksi
-            ramah sensorik, dan apresiasi penuh kasih.
-          </p>
         </div>
         <div className="why-grid">
           {features.map((f) => (

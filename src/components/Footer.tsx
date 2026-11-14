@@ -75,8 +75,6 @@ export default function Footer() {
         <span>
           © {new Date().getFullYear()} ISYARA, platform komunikasi visual dan belajar inklusif.
         </span>
-
-        <span>Dirancang bersama terapis wicara 💜</span>
       </div>
     </footer>
   );

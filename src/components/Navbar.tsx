@@ -15,7 +15,7 @@ const items = [
   { label: "Beranda", href: "/", icon: "🏠" },
   { label: "BicaraKu (AAC)", href: "/bicaraku", icon: "💬" },
   { label: "Cerita Isyarat", href: "/cerita", icon: "📚" },
-  { label: "Tentang Kami", href: "/tentang", icon: "💜" },
+  { label: "Petualangan", href: "/Petualangan", icon: "💜" },
 ];
 
 export default function Navbar() {
@@ -337,3 +337,4 @@ export default function Navbar() {
     </>
   );
 }
+
